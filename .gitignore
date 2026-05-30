@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+.venv/
+.browser-profile/
+*.tmp
+*.log
+
+# Local data exports
+PDF Extraction/
+Web Tiktok Screenshot/
+*.csv
+*.xlsx
+*.pbix
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
