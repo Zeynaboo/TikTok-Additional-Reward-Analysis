@@ -1,0 +1,26 @@
+let
+    Source = Excel.CurrentWorkbook(){[Name="Tableau4"]}[Content],
+    #"Type modifie" = Table.TransformColumnTypes(Source,{{"Colonne1", type text}}),
+    #"Fractionner la colonne par delimiteur" = Table.SplitColumn(#"Type modifie", "Colonne1", Splitter.SplitTextByDelimiter(";", QuoteStyle.Csv), {"Colonne1.1", "Colonne1.2", "Colonne1.3", "Colonne1.4", "Colonne1.5", "Colonne1.6", "Colonne1.7"}),
+    #"Type modifie1" = Table.TransformColumnTypes(#"Fractionner la colonne par delimiteur",{{"Colonne1.1", type text}, {"Colonne1.2", type text}, {"Colonne1.3", type text}, {"Colonne1.4", type text}, {"Colonne1.5", type text}, {"Colonne1.6", type text}, {"Colonne1.7", type text}}),
+    #"En-tetes promus" = Table.PromoteHeaders(#"Type modifie1", [PromoteAllScalars=true]),
+    #"Type modifie2" = Table.TransformColumnTypes(#"En-tetes promus",{{"ID", Int64.Type}, {"Date", type text}, {"Title", type text}, {"Total_Reward", Currency.Type}, {"RPM", Currency.Type}, {"Additional?", type text}, {"Qualified_Views_Calc", Int64.Type}}),
+    #"Standard_Reward ajoute" = Table.AddColumn(#"Type modifie2", "Standard_Reward", each if Text.Lower([#"Additional?"]) = "non" then [Total_Reward] else null),
+    #"Type modifie3" = Table.TransformColumnTypes(#"Standard_Reward ajoute",{{"Standard_Reward", Currency.Type}}),
+    #"Additional_Reward ajoute" = Table.AddColumn(#"Type modifie3", "Additional_Reward", each if [Standard_Reward] <> null then 0 else null),
+    #"Type modifie4" = Table.TransformColumnTypes(#"Additional_Reward ajoute",{{"Additional_Reward", Currency.Type}}),
+    #"Colonnes supprimees" = Table.RemoveColumns(#"Type modifie4",{"Qualified_Views_Calc"}),
+    #"Qualified_View ajoute" = Table.AddColumn(#"Colonnes supprimees", "Qualified_View", each if [RPM] = 0 or [RPM] = null then 0 else Number.RoundDown((([Total_Reward] / [RPM]) * 1000) / 100) * 100),
+    #"Type modifie5" = Table.TransformColumnTypes(#"Qualified_View ajoute",{{"Qualified_View", Int64.Type}}),
+    #"Type modifie6" = Table.TransformColumnTypes(#"Type modifie5",{{"ID", type text}}),
+    #"Requetes fusionnees" = Table.NestedJoin(#"Type modifie6", {"ID"}, Saisie_Manuelle, {"ID"}, "Saisie_Manuelle", JoinKind.LeftOuter),
+    #"Saisie_Manuelle developpe" = Table.ExpandTableColumn(#"Requetes fusionnees", "Saisie_Manuelle", {"Standard_Reward", "Additional_Reward"}, {"Saisie_Manuelle.Standard_Reward", "Saisie_Manuelle.Additional_Reward"}),
+    #"Standard_Final ajoute" = Table.AddColumn(#"Saisie_Manuelle developpe", "Standard_Final", each if [Saisie_Manuelle.Standard_Reward] <> null then [Saisie_Manuelle.Standard_Reward] else [Standard_Reward]),
+    #"Additional_Final ajoute" = Table.AddColumn(#"Standard_Final ajoute", "Additional_Final", each if [Saisie_Manuelle.Additional_Reward] <> null then [Saisie_Manuelle.Additional_Reward] else [Additional_Reward]),
+    #"Colonnes supprimees1" = Table.RemoveColumns(#"Additional_Final ajoute",{"Saisie_Manuelle.Additional_Reward", "Saisie_Manuelle.Standard_Reward", "Standard_Reward", "Additional_Reward"}),
+    #"Colonnes renommees" = Table.RenameColumns(#"Colonnes supprimees1",{{"Standard_Final", "Standard_Reward"}, {"Additional_Final", "Additional_Reward"}}),
+    #"Type modifie7" = Table.TransformColumnTypes(#"Colonnes renommees",{{"Standard_Reward", Currency.Type}, {"Additional_Reward", Currency.Type}}),
+    #"Title_Clean ajoute" = Table.AddColumn(#"Type modifie7", "Title_Clean", each Text.Start(Text.Select(Text.Lower(Text.Trim([Title])), {"a".."z","0".."9"}), 20), type text),
+    #"Video_ID ajoute" = Table.AddColumn(#"Title_Clean ajoute", "Video_ID", each Date.ToText(Date.FromText([Date], "fr-FR"), "yyyyMMdd") & "_" & [Title_Clean], type text)
+in
+    #"Video_ID ajoute"

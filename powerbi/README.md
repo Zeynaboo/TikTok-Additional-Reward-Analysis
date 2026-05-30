@@ -2,6 +2,15 @@
 
 Put here:
 
-- `.pbix` file if you want it versioned
-- dashboard screenshots if you prefer keeping them with the BI layer
-- notes about measures, dimensions, and visuals
+- the `.pbix` file if you want it versioned
+- exported screenshots of the dashboard
+- measure notes
+- page descriptions
+
+Recommended dashboard pages:
+
+1. Overview
+2. Reward Drivers
+3. Search and SEO
+4. Audience
+5. Content Strategy

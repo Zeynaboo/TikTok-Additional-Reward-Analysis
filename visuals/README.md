@@ -3,6 +3,12 @@
 Add here:
 
 - dashboard screenshots
-- schema diagrams
+- star schema diagram
 - ETL flow diagram
-- before/after examples for data cleanup if useful
+- selected charts for the GitHub README or case study
+
+Recommended first exports:
+
+- retention vs reward scatter plot
+- search query profitability chart
+- audience geography visual
