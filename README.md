@@ -26,9 +26,9 @@ This analysis focuses on three main questions:
 ## Scope
 
 - Data source: proprietary TikTok Studio creator data
-- Time range: August 2025 to May 2026
-- Sample size: 82 cleaned videos
-- Tools: AutoHotkey, Power Query, Excel, Power BI, Python
+- Time range: January 2025 to December 2026 filter window, with creator performance concentrated between 2025 and 2026
+- Current dashboard sample: 80 matched videos in the Power BI model
+- Tools: AutoHotkey, Power Query, Excel, Power BI
 
 ## Repository Structure
 
@@ -43,6 +43,7 @@ portfolio-tiktok-creator-rewards/
 |-- docs/
 |   |-- case-study.md
 |   |-- dashboard-plan.md
+|   |-- final-analysis.md
 |   |-- findings-template.md
 |   `-- methodology.md
 |-- etl/
@@ -60,11 +61,13 @@ portfolio-tiktok-creator-rewards/
 
 ## Data Model
 
-Recommended star schema:
+Current Power BI model:
 
-- `T_Engagement`
-- `T_Traffic_SEO`
-- `T_Audience`
+- `FACT_Engagement`
+- `FACT_Reward`
+- `FACT_Traffic_SEO`
+- `FACT_Audience`
+- `DIM_Date`
 
 Shared key:
 
@@ -86,11 +89,24 @@ This key is used to connect financial metrics with post-level analytics.
 5. Model the data into analysis-ready tables.
 6. Analyze patterns in Power BI and supporting scripts.
 
-## Main Hypotheses
+## Current Dashboard Results
 
-1. Higher average watch time is associated with a higher probability of `Additional Reward`.
-2. Search-driven traffic is associated with stronger monetization than standard viral traffic.
-3. Audience geography and content theme influence reward performance.
+The current Power BI dashboard shows the following top-level results:
+
+- `80` matched videos analyzed
+- `$62.62` total reward across the tracked sample
+- `$31.81` total additional reward
+- `6` rewarded videos with positive `Additional Reward`
+- `15.38%` average search traffic across the sample
+
+Observed patterns in the current build:
+
+- rewarded videos tend to appear among videos with stronger watch time and stronger search contribution
+- MBTI pairing and relationship-style search terms recur frequently in top search-led videos
+- non-follower reach dominates the audience mix, suggesting discovery-first performance
+- the core audience skews toward ages `18-34`, with `25-34` as the largest segment in the current dashboard
+
+These are exploratory findings, not causal proof.
 
 ## Key Strengths of the Project
 
@@ -107,12 +123,28 @@ This key is used to connect financial metrics with post-level analytics.
 - Findings indicate patterns, not causal proof
 - Private raw data is not fully published in this repository
 
-## What To Add Next
+## Power BI Deliverables
 
-- dashboard screenshots in `visuals/`
-- a public-safe sample dataset in `data/`
-- final business findings in `docs/findings-template.md`
-- optional Power BI export or walkthrough in `powerbi/`
+The dashboard currently includes 5 pages:
+
+1. `Overview`
+2. `Reward Drivers`
+3. `Search and SEO`
+4. `Audience Analysis`
+5. `Content Strategy`
+
+Recommended repo additions before publishing:
+
+- exported dashboard screenshots in `visuals/`
+- optional sanitized sample dataset in `data/`
+- final annotated screenshots or a short walkthrough in `powerbi/`
+
+Recommended reading order:
+
+1. [Case Study](./docs/case-study.md)
+2. [Methodology](./docs/methodology.md)
+3. [Final Analysis](./docs/final-analysis.md)
+4. [Findings](./docs/findings-template.md)
 
 ## Contact
 

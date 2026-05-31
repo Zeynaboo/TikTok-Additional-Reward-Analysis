@@ -1,21 +1,22 @@
 # Dashboard Plan
 
+The dashboard has been implemented as a 5-page analytical report. This file now documents the final intent of each page rather than an early draft.
+
 ## Page 1 - Overview
 
 Main KPIs:
 
 - total videos
-- total rewards
-- average reward per video
-- average views
-- average watch time
-- share of videos with additional reward
+- total reward
+- total additional reward
+- rewarded video count
 
 Visuals:
 
 - KPI cards
-- rewarded vs non-rewarded split
 - reward trend over time
+- reward mix
+- core performance snapshot
 
 ## Page 2 - Reward Drivers
 
@@ -23,8 +24,7 @@ Visuals:
 
 - scatter: average watch time vs additional reward
 - scatter: completion rate vs additional reward
-- scatter: search traffic vs additional reward
-- box comparison: rewarded vs non-rewarded
+- comparison block: rewarded vs non-rewarded summary metrics
 
 Goal:
 
@@ -34,10 +34,10 @@ Goal:
 
 Visuals:
 
-- top search queries by average reward
-- search traffic contribution by video
-- keyword profitability chart
-- title and hashtag observations
+- top search queries by reward potential
+- search traffic vs additional reward
+- traffic source profile
+- search-led video snapshot
 
 Goal:
 
@@ -47,10 +47,10 @@ Goal:
 
 Visuals:
 
-- age distribution
+- age summary cards
 - gender breakdown
-- top countries
-- rewarded vs non-rewarded audience comparison
+- top audience locations support table
+- viewer mix
 
 Goal:
 
@@ -60,8 +60,8 @@ Goal:
 
 Visuals:
 
-- top rewarded topics
-- top underperforming topics
+- top rewarded videos
+- top search-led videos
 - recommendation summary
 
 Goal:

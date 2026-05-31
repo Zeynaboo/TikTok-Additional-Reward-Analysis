@@ -66,9 +66,11 @@ This approach was necessary because the raw exports did not always share a singl
 
 Instead of keeping a single wide table, the analysis is organized as a star schema:
 
-- `T_Engagement`
-- `T_Traffic_SEO`
-- `T_Audience`
+- `FACT_Engagement`
+- `FACT_Reward`
+- `FACT_Traffic_SEO`
+- `FACT_Audience`
+- `DIM_Date`
 
 This structure improves clarity, reduces redundancy, and makes analysis in Power BI easier to scale.
 
@@ -88,4 +90,5 @@ Validation approach:
 - sample size is still moderate
 - some fields may require manual review
 - OCR-based attempts were less reliable than structured cleanup
+- some support views, especially location breakdowns, remain more useful as detail tables than as headline visuals without further reshaping
 - conclusions should be interpreted as exploratory patterns

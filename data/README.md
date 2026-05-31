@@ -18,3 +18,13 @@ If you later choose to publish a sample dataset, add:
 - `tiktok_rewards_sanitized.csv`
 
 and keep personally sensitive or financially sensitive fields anonymized when needed.
+
+Recommended public-safe approach for this project:
+
+- keep raw TikTok Studio exports private
+- optionally publish a reduced analytical sample with:
+  - normalized `Video_ID`
+  - engagement metrics
+  - traffic metrics
+  - audience percentages
+- remove or mask fields you consider financially sensitive if you do not want to expose exact revenue values publicly

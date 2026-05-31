@@ -7,8 +7,17 @@ Add here:
 - ETL flow diagram
 - selected charts for the GitHub README or case study
 
-Recommended first exports:
+Recommended exports for the final portfolio version:
 
-- retention vs reward scatter plot
-- search query profitability chart
-- audience geography visual
+- `01-overview.png`
+- `02-reward-drivers.png`
+- `03-search-seo.png`
+- `04-audience-analysis.png`
+- `05-content-strategy.png`
+- `model-view.png`
+
+Best visuals to reuse in the main README or case study:
+
+- watch time vs additional reward scatter
+- search traffic vs additional reward scatter
+- content strategy page

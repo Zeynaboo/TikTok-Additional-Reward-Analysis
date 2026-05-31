@@ -1,0 +1,13 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#0A0F19"/>
+  <circle cx="960" cy="540" r="520" fill="#25F4EE" fill-opacity="0.05"/>
+  <circle cx="1590" cy="940" r="300" fill="#FE2C55" fill-opacity="0.08"/>
+  <rect x="40" y="32" width="1840" height="84" rx="24" fill="#111827" stroke="#263244" stroke-width="2"/>
+  <rect x="40" y="146" width="320" height="250" rx="24" fill="#121B2A" stroke="#25F4EE" stroke-width="2"/>
+  <rect x="40" y="420" width="320" height="250" rx="24" fill="#121B2A" stroke="#263244" stroke-width="2"/>
+  <rect x="40" y="694" width="320" height="346" rx="24" fill="#121B2A" stroke="#263244" stroke-width="2"/>
+  <rect x="390" y="146" width="1490" height="430" rx="28" fill="#121B2A" stroke="#263244" stroke-width="2"/>
+  <rect x="390" y="606" width="1490" height="434" rx="28" fill="#121B2A" stroke="#263244" stroke-width="2"/>
+  <text x="78" y="83" fill="#F7FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Reward Drivers</text>
+  <text x="78" y="107" fill="#8FA3BF" font-family="Segoe UI, Arial, sans-serif" font-size="16">Driver analysis and scatter page</text>
+</svg>

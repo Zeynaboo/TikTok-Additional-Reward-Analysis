@@ -23,8 +23,8 @@ Core questions:
 ## Dataset
 
 - Source: creator-owned TikTok Studio data
-- Time period: August 2025 to May 2026
-- Sample: 82 cleaned videos
+- Time period: creator performance collected across 2025 and 2026
+- Current Power BI sample: 80 matched videos
 - Coverage:
   - engagement metrics
   - reward metrics
@@ -46,11 +46,13 @@ Core questions:
 
 The analysis is structured around a star schema:
 
-- `T_Engagement`
-- `T_Traffic_SEO`
-- `T_Audience`
+- `FACT_Engagement`
+- `FACT_Reward`
+- `FACT_Traffic_SEO`
+- `FACT_Audience`
+- `DIM_Date`
 
-This structure separates financial performance, traffic behavior, and audience composition while preserving joinability through `Video_ID`.
+This structure separates financial performance, traffic behavior, audience composition, and date filtering while preserving joinability through `Video_ID`.
 
 ## Analytical Framing
 
@@ -64,11 +66,24 @@ Examples of tested ideas:
 - audience geography differences
 - query and content theme clustering
 
-## Expected Deliverables
+## Current Findings
 
-- a Power BI dashboard
-- a cleaned analytical dataset
+The current dashboard highlights several repeatable patterns:
+
+- only a small subset of videos in the sample triggered positive `Additional Reward`
+- rewarded videos tend to sit in stronger watch-time and stronger search-traffic zones than the bulk of non-rewarded videos
+- top search-led videos frequently use MBTI pairing, relationship, and curiosity-driven query phrasing
+- audience discovery is dominated by non-followers, which supports a search and discovery-led content strategy
+- the strongest age concentration in the current dashboard is `25-34`, followed by `18-24`
+
+At the current stage, the most stable conclusion is not that a single metric "causes" reward activation, but that search visibility plus stronger retention appears repeatedly in the rewarded subset.
+
+## Deliverables
+
+- a 5-page Power BI dashboard
+- a cleaned analytical dataset structure
 - a methodology document
+- a narrative final analysis document
 - business recommendations for future content strategy
 
 ## Business Value
@@ -84,4 +99,5 @@ The value of this project is practical:
 
 - the sample is still moderate
 - some fields required manual review
+- some geography and demographic detail fields remain better suited to support tables than final headline metrics
 - results should be read as pattern detection, not algorithm proof
